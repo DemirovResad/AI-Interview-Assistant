@@ -13,8 +13,8 @@ AI Interview Assistant/
 │   ├── LLM.py            # Language Model (Gemini 3.1 Flash Lite)
 │   ├── TTS.py            # Text-to-Speech (Gemini TTS)
 │   ├── prompts.py        # All interview prompts
-│   ├── interview.py      # Main interview pipeline
-│   └── app.py            # CLI test runner
+│   └──interview.py      # Main interview pipeline
+│   
 ├── frontend/
 │   └── streamlit_app.py  # Web UI (Streamlit)
 ├── .env                  # API keys (not committed)
