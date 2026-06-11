@@ -40,9 +40,15 @@ AI Interview Assistant/
 
 | Component | Technology |
 |-----------|------------|
+<<<<<<< HEAD
 | STT | Groq Whisper `whisper-large-v3-turbo` |
 | LLM | Gemini `gemini-3.1-flash-lite` |
 | TTS | Gemini `gemini-2.5-flash-preview-tts` |
+=======
+| STT | Groq Whisper (`whisper-large-v3-turbo`) |
+| LLM | Gemini LLM (`gemini-3.1-flash-lite`) |
+| TTS | Gemini TTS (`gemini-2.5-flash-preview-tts`) / |
+>>>>>>> cb0f1031307a587056ff85591d053c6005dd6541
 | UI | Streamlit + Plotly |
 | Audio | sounddevice, soundfile |
 | Language | Azerbaijani 🇦🇿 |
