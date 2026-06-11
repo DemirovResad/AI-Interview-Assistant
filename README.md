@@ -1,36 +1,38 @@
 # 🤖 AI Interview Assistant
 
-An intelligent voice-based technical interview assistant powered by **Groq Whisper** (STT), **Groq LLaMA** (LLM), and **Gemini TTS** (TTS).
+An intelligent voice-based technical interview assistant powered by **Groq Whisper** (STT), **Gemini 3.1 Flash Lite** (LLM), and **Gemini TTS** (TTS). Conducts fully automated technical interviews in **Azerbaijani** 🇦🇿.
 
 ---
 
 ## 📁 Project Structure
 
+```
 AI Interview Assistant/
 ├── backend/
 │   ├── STT.py            # Speech-to-Text (Groq Whisper)
-│   ├── LLM.py            # Language Model (Groq LLaMA 3.3 70B)
-│   ├── TTS.py            # Text-to-Speech (Gemini TTS / gTTS)
+│   ├── LLM.py            # Language Model (Gemini 3.1 Flash Lite)
+│   ├── TTS.py            # Text-to-Speech (Gemini TTS)
 │   ├── prompts.py        # All interview prompts
 │   ├── interview.py      # Main interview pipeline
 │   └── app.py            # CLI test runner
 ├── frontend/
-│   └── streamlit_app.py  # Web UI
+│   └── streamlit_app.py  # Web UI (Streamlit)
 ├── .env                  # API keys (not committed)
 ├── .gitignore
 └── README.md
+```
 
 ---
 
 ## 🚀 Features
 
 - 📄 **Vacancy Analyzer** — Extracts skills, seniority, and interview focus from job descriptions
-- 🧠 **Question Generator** — Creates 15 tailored interview questions (Easy / Medium / Hard)
-- 🎤 **Voice Input** — Candidate answers via microphone (Azerbaijani language support)
+- 🧠 **Question Generator** — Creates 15 tailored questions (Easy / Medium / Hard)
+- 🎤 **Voice Input** — Candidate answers via microphone in Azerbaijani
 - ⚖️ **Answer Evaluator** — Scores answers on technical accuracy, depth, and communication
 - 🔄 **Adaptive Questions** — Adjusts difficulty based on previous answer scores
 - 📊 **Final Report** — Overall score, hiring recommendation, strengths & weaknesses
-- 🌐 **Streamlit UI** — Full web interface with charts and downloadable JSON report
+- 🌐 **Streamlit UI** — Web interface with charts and downloadable JSON report
 
 ---
 
@@ -38,9 +40,9 @@ AI Interview Assistant/
 
 | Component | Technology |
 |-----------|------------|
-| STT | Groq Whisper (`whisper-large-v3-turbo`) |
-| LLM | Gemini LLM (`gemini-3.1-flash-lite`) |
-| TTS | Gemini TTS (`gemini-2.5-flash-preview-tts`) / gTTS |
+| STT | Groq Whisper `whisper-large-v3-turbo` |
+| LLM | Gemini `gemini-3.1-flash-lite` |
+| TTS | Gemini `gemini-2.5-flash-preview-tts` |
 | UI | Streamlit + Plotly |
 | Audio | sounddevice, soundfile |
 | Language | Azerbaijani 🇦🇿 |
@@ -52,8 +54,8 @@ AI Interview Assistant/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/ai-interview-assistant.git
-cd ai-interview-assistant
+git clone https://github.com/DemirovResad/AI-Interview-Assistant.git
+cd AI-Interview-Assistant
 ```
 
 ### 2. Install dependencies
@@ -65,13 +67,24 @@ pip install groq google-genai sounddevice soundfile numpy \
 
 ### 3. Create `.env` file
 
+```
 GROQ_API_KEY=your_groq_api_key
 GEMINI_API_KEY=your_gemini_api_key
+```
 
-> 🔑 **Groq API key:** [console.groq.com](https://console.groq.com)  
+> 🔑 **Groq API key:** [console.groq.com](https://console.groq.com)
 > 🔑 **Gemini API key:** [aistudio.google.com](https://aistudio.google.com)
 
 ### 4. Create `.gitignore`
+
+```
+.env
+__pycache__/
+*.pyc
+.DS_Store
+*.wav
+*.mp3
+```
 
 ---
 
@@ -84,7 +97,7 @@ cd frontend
 /usr/local/bin/python3.12 -m streamlit run streamlit_app.py
 ```
 
-Then open [http://localhost:8501](http://localhost:8501)
+Open [http://localhost:8501](http://localhost:8501)
 
 ### CLI (Terminal)
 
@@ -97,19 +110,21 @@ python app.py
 
 ## 🔄 Pipeline
 
-Vacancy Upload        →  Paste job description
-↓
-Vacancy Analyzer      →  Extract skills & seniority       (LLM → JSON)
-↓
-Question Generator    →  15 questions by difficulty        (LLM → JSON)
-↓
-Candidate Answer      →  Voice input via microphone        (STT → Text)
-↓
-Answer Evaluator      →  Score 0–10 with feedback          (LLM → JSON)
-↓
-Adaptive Generator    →  Adjust next question difficulty   (LLM → JSON)
-↓
-Final Report          →  Overall score & recommendation    (LLM → JSON)
+```
+1. Vacancy Upload        →  Paste job description
+         ↓
+2. Vacancy Analyzer      →  Extract skills & seniority       (LLM → JSON)
+         ↓
+3. Question Generator    →  15 questions by difficulty        (LLM → JSON)
+         ↓
+4. Candidate Answer      →  Voice input via microphone        (STT → Text)
+         ↓
+5. Answer Evaluator      →  Score 0–10 with feedback          (LLM → JSON)
+         ↓
+6. Adaptive Generator    →  Adjust next question difficulty   (LLM → JSON)
+         ↓
+7. Final Report          →  Overall score & recommendation    (LLM → JSON)
+```
 
 ---
 
@@ -146,7 +161,7 @@ Final Report          →  Overall score & recommendation    (LLM → JSON)
 | Gemini LLM | 1,500 req/day |
 | Gemini TTS | 10 req/day |
 
-> 💡 **Tip:** Use **Groq** for LLM + STT and **gTTS** for TTS to stay within free limits.
+> 💡 **Tip:** Use **gTTS** instead of Gemini TTS to avoid the 10 req/day limit.
 
 ---
 
@@ -160,7 +175,4 @@ Final Report          →  Overall score & recommendation    (LLM → JSON)
 
 ## 📝 License
 
-MIT License — free to use and modify.# AI-Interview-Assistant
-# AI-Interview-Assistant
-# AI-Interview-Assistant
-# AI-Interview-Assistant
+MIT License — free to use and modify.
