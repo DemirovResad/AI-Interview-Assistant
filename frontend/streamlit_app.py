@@ -6,7 +6,7 @@ import json
 import streamlit as st
 import plotly.graph_objects as go
 import plotly.express as px
-from interview import (
+from backend.interview import (
     analyze_vacancy,
     generate_questions,
     get_and_evaluate_answer,
@@ -275,8 +275,8 @@ elif st.session_state.stage == "interview":
                     st.warning("⚠️ Cavab boş ola bilməz!")
                 else:
                     with st.spinner("⚖️ Qiymətləndirilir..."):
-                        from prompts import answer_evaluator_prompt
-                        from LLM import ask
+                        from backend.prompts import answer_evaluator_prompt
+                        from backend.LLM import ask
                         import json
 
                         prompt = answer_evaluator_prompt(
@@ -304,7 +304,7 @@ elif st.session_state.stage == "interview":
 
                         # Adaptiv sual
                         if current_idx + 1 < total:
-                            from prompts import adaptive_question_prompt
+                            from backend.prompts import adaptive_question_prompt
                             adapt_prompt = adaptive_question_prompt(
                                 skill=question["skill"],
                                 question=question["question"],
@@ -331,7 +331,7 @@ elif st.session_state.stage == "interview":
             st.info("🎤 Səsli cavab üçün aşağıdakı düyməni basın")
             if st.button("🎙️ Mikrofonu Aç və Cavabla", key=f"voice_{current_idx}"):
                 with st.spinner("🎙️ Dinlənilir..."):
-                    from STT import listen
+                    from backend.STT import listen
                     voice_answer = listen()
                     if voice_answer:
                         st.success(f"📝 Transkript: {voice_answer}")
@@ -343,8 +343,8 @@ elif st.session_state.stage == "interview":
                 if st.button("✅ Səsli Cavabı Göndər", type="primary", key=f"voice_submit_{current_idx}"):
                     voice_text = st.session_state[f"voice_text_{current_idx}"]
                     with st.spinner("⚖️ Qiymətləndirilir..."):
-                        from prompts import answer_evaluator_prompt
-                        from LLM import ask
+                        from backend.prompts import answer_evaluator_prompt
+                        from backend.LLM import ask
                         import json
 
                         prompt = answer_evaluator_prompt(
