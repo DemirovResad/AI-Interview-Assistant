@@ -1,0 +1,32 @@
+# API keys və mühit dəyişənləri
+.env
+
+# Mac sistem faylları
+.DS_Store
+**/.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Audio temp faylları
+*.wav
+*.mp3
+
+# Logs
+*.log
